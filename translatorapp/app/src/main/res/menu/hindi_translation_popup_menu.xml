@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/share_option"
+        android:title="@string/share_option_string"
+        android:checkable="false"/>
+
+    <!--  will be adding new options once I come up with them  -->
+
+</menu>

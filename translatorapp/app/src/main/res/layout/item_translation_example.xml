@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="englishTranslationItem"
+            type="com.example.core.data.EnglishTranslationItems" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/english_translation_item_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="16dp"
+            android:text="@{englishTranslationItem.translation}"
+            android:textAppearance="@style/TextAppearance.Translator.EnglishTranslation"
+            tools:text="this word translates to this, roughly, oh yeah!" />
+
+        <TextView
+            android:id="@+id/english_example_item_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="4dp"
+            android:text="@{englishTranslationItem.example}"
+            android:textAppearance="@style/TextAppearance.Translator.EnglishExample"
+            tools:text="his is an random sentence explaining use of above translation!" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

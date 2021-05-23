@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.translatorapp.ui.home.HomeFragment"
+        android:label="@string/home_fragment_title"
+        tools:layout="@layout/fragment_home" >
+        <argument
+            android:name="hindiAndEnglishTranslation"
+            app:argType="com.example.core.data.entities.HindiAndEnglishTranslation"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/phraseBookFragment"
+        android:name="com.example.translatorapp.ui.phrasebook.PhraseBookFragment"
+        android:label="@string/phraseBook_fragment_title"
+        tools:layout="@layout/fragment_phrase_book" >
+        <action
+            android:id="@+id/action_phrasebook_to_home"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.translatorapp.ui.settings.SettingsFragment"
+        android:label="@string/settings_fragment_title"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

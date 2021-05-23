@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="translation"
+            type="com.example.core.data.entities.HindiAndEnglishTranslation" />
+        <variable
+            name="favourite"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="6dp">
+
+        <LinearLayout
+            android:id="@+id/words_container_item_word_LL"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/favourite_item_IV">
+
+            <TextView
+                android:id="@+id/english_word_item_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@{translation.hindi.word}"
+                android:textAppearance="@style/TextAppearance.Translator.Subtitle1"
+                tools:text="Random" />
+
+            <TextView
+                android:id="@+id/hindi_word_item_textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:text="@{translation.hindi.hindiTranslation}"
+                android:textAppearance="@style/TextAppearance.Translator.ItemHindiWord"
+                app:layout_constraintEnd_toStartOf="@+id/favourite_word_imageView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/english_word_item_textView"
+                tools:text="@string/hindi_placeholder_word" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/favourite_item_IV"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:setFavouriteRecent="@{favourite}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/ic_star_border_black"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?attr/scrimBackground"
+            app:layout_constraintTop_toBottomOf="@+id/words_container_item_word_LL"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

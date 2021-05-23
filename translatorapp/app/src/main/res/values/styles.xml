@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget.Translator.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleTextColor">?attr/colorOnPrimary</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Translator.Headline6</item>
+        <item name="theme">@style/ToolBarTheme</item>
+    </style>
+
+    <style name="ToolBarTheme">
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+    <style name="Widget.Translator.TranslationContainer" parent="Widget.MaterialComponents.CardView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Translator.Card</item>
+    </style>
+</resources>

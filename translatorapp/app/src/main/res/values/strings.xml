@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">TranslatorApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Fragment Titles    -->
+    <string name="home_fragment_title">Translate</string>
+    <string name="phraseBook_fragment_title">PhraseBook</string>
+    <string name="settings_fragment_title">Settings</string>
+
+    <!-- Drawer item titles  -->
+    <string name="home_fragment_drawer_title">Home</string>
+    <string name="phraseBook_fragment_drawer_title">PhraseBook</string>
+    <string name="settings_fragment_drawer_title">Settings</string>
+    <string name="word_editText_hint">Type the Word</string>
+    <string name="hindi">HINDI</string>
+
+    <string name="hindi_placeholder_word">यादृच्छिक</string>
+    <string name="definitions">Definitions</string>
+    <string name="share_option_string">Share</string>
+    <string name="theme">Theme</string>
+    <string name="theme_settings_explanation">Switch between dark and light themes</string>
+    <string name="clear_recent_words">Clear Recent</string>
+    <string name="clear_setting_description">Clear all the recently searched words</string>
+    <string name="dark">Dark</string>
+    <string name="light">Light</string>
+    <string name="delete_recent_settings_title">Delete recent words</string>
+    <string name="cancel">CANCEL</string>
+    <string name="ok">OK</string>
+    <string name="theme_settings_title">Choose Theme</string>
+
+    <string name="network_error_message">Couldn\'t get translations. Try rechecking the spellings or the network.</string>
+
+
+</resources>

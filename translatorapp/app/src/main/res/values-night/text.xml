@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.Translator.ItemHindiWord" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textColor">@color/grey_dark</item>
+    </style>
+
+    <style name="TextAppearance.Translator.EnglishExample" parent="TextAppearance.Translator.Caption">
+        <item name="android:textColor">@color/grey_dark</item>
+    </style>
+
+    <style name="TextAppearance.Translator.SettingsDescription" parent="TextAppearance.Translator.Body1">
+        <item name="font">@font/roboto_slab</item>
+        <item name="fontFamily">@font/roboto_slab</item>
+        <item name="android:textColor">@color/grey_dark</item>
+    </style>
+
+</resources>

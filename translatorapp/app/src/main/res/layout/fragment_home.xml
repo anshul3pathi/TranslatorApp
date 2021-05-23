@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.translatorapp.ui.home.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parent_home_CL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/translation_loading_progress_indicator_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:progressIndicatorGoneUnless="@{viewModel.networkStatus}"
+            android:indeterminate="true"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:context=".ui.home.HomeFragment">
+
+            <LinearLayout
+                android:id="@+id/container_scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_word_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:endIconMode="clear_text"
+                    android:hint="@string/word_editText_hint"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:imeOptions="actionSearch"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?attr/scrimBackground"
+                    android:layout_marginTop="4dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recent_words_RV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_margin="4dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:rvGoneUnless="@{viewModel.networkStatus}"
+                    tools:listitem="@layout/item_word" />
+
+                <LinearLayout
+                    android:id="@+id/translation_container_home_LL"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:translationContainerGoneUnless="@{viewModel.networkStatus}"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/hindi_translation_container_home_MCV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:elevation="6dp"
+                        style="@style/Widget.Translator.TranslationContainer"
+                        android:layout_margin="8dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/hindi_translation_container_home_CL"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp">
+
+                            <TextView
+                                android:id="@+id/hindi_label_TV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/hindi"
+                                android:textAppearance="@style/TextAppearance.Translator.Hindi"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/hindi_word_home_TV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="@{viewModel.translation.hindi.hindiTranslation}"
+                                android:textAppearance="@style/TextAppearance.Translator.HindiTranslation"
+                                app:layout_constraintStart_toStartOf="@+id/hindi_label_TV"
+                                app:layout_constraintTop_toBottomOf="@+id/hindi_label_TV"
+                                tools:text="@string/hindi_placeholder_word" />
+
+                            <ImageView
+                                android:id="@+id/hindi_word_favourite_IV"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginTop="4dp"
+                                app:setFavouriteTranslationContainer="@{viewModel.translation.hindi.favourite}"
+                                android:onClick="@{() -> viewModel.updateFavouriteFromTranslationContainer()}"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:src="@drawable/ic_star_border_white"/>
+
+                            <ImageView
+                                android:id="@+id/show_more_home_IV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:src="@drawable/ic_more_vert_white"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/copy_home_IV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="48dp"
+                                android:layout_marginBottom="8dp"
+                                android:src="@drawable/ic_content_copy_white"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toLeftOf="@+id/show_more_home_IV" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:elevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="@string/definitions"
+                                android:textAppearance="@style/TextAppearance.Translator.Definitions" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/english_translations_home_RV"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:listitem="@layout/item_english_translation" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

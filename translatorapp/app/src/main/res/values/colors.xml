@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primary_blue">#42a5f5</color>
+    <color name="primary_blue_light">#80d6ff</color>
+    <color name="primary_blue_dark">#0077c2</color>
+    <color name="secondary_purple">#7986cb</color>
+    <color name="secondary_purple_light">#aab6fe</color>
+    <color name="secondary_purple_dark">#aab6fe</color>
+    <color name="ui_scrim_light">#B3FFFFFF</color>
+    <color name="ui_scrim_dark">#40000000</color>
+    <color name="grey_light">#4C4C4C</color>
+    <color name="grey_dark">#E3E2E2</color>
+    <color name="dark_theme_surface">#121212</color>
+</resources>
