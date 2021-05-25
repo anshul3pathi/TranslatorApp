@@ -9,3 +9,11 @@
 .cxx
 local.properties
 .vscode/
+backend/.env
+backend/__pycache__/resource.cpython-37.pyc
+backend/__pycache__/resource.cpython-38.pyc
+backend/__pycache__/scrapper.cpython-37.pyc
+backend/__pycache__/scrapper.cpython-38.pyc
+backend/chromedriver.exe
+backend/tempCodeRunnerFile.py
+backend/test_script.py
