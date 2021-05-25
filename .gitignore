@@ -5,8 +5,6 @@
 .DS_Store
 /build
 /captures
-.externalNativeBuild
-.cxx
 local.properties
 .vscode/
 backend/.env

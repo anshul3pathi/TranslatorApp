@@ -27,7 +27,7 @@ Screenshots at the end.
 
 This project follows the famous MVVM architecture and best practices from Google's [GithubBrowserSample](https://github.com/android/architecture-components-samples/tree/master/GithubBrowserSample)
 
-![](extras/arch.jpg)
+![](translatorapp/extras/arch.jpg)
 
 ## Backend
 This app gets the translations from the backend hosted at heroku. Built using *Python and Flask*.
