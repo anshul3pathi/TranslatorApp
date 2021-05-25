@@ -3,8 +3,7 @@
 A minimalistic translation app that translates words or sentences from English to Hindi, built using *MVVM architecture with latest Android Development tools*.
 
 ## Designs - Dark Mode also available 🌙
-![light-splash](translatorapp/extras/light_splash.jpg) ![light-1](translatorapp/extras/light_1.jpg) ![light-2](translatorapp/extras/light_2.jpg) ![light-3](translatorapp/extras/light_3.jpg) ![light-4](translatorapp/extras/light_4.jpg)
-![dark-1](translatorapp/extras/dark_1.jpg) ![dark-2](translatorapp/extras/dark_2.jpg) ![dark-2](translatorapp/extras/dark_3.jpg)
+Screenshots at the end.
 
 ## Built with
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
@@ -37,3 +36,7 @@ This app gets the translations from the backend hosted at heroku. Built using *P
 
 - 🤓 Icons are from [flaticon.com](https://www.flaticon.com/) 
 - 💽 Data from [translator api](https://translator-api.herokuapp.com/translate/{word or sentence})
+
+## Screenshots 
+![light-splash](translatorapp/extras/light_splash.jpg) ![light-1](translatorapp/extras/light_1.jpg) ![light-2](translatorapp/extras/light_2.jpg) ![light-3](translatorapp/extras/light_3.jpg) ![light-4](translatorapp/extras/light_4.jpg)
+![dark-1](translatorapp/extras/dark_1.jpg) ![dark-2](translatorapp/extras/dark_2.jpg) ![dark-2](translatorapp/extras/dark_3.jpg)
