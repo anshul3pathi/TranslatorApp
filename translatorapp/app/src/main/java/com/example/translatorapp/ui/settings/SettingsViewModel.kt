@@ -7,13 +7,15 @@ import androidx.lifecycle.viewModelScope
 import com.example.core.AppTheme
 import com.example.core.repository.TranslationRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
-    private val repository: TranslationRepo
+    private val repository: TranslationRepo,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
 
     private val _appTheme = MutableLiveData(getTheme())
@@ -21,7 +23,7 @@ class SettingsViewModel @Inject constructor(
         get() = _appTheme
 
     fun clearAllTranslations() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(dispatcher) {
             repository.deleteAllSavedTranslations()
         }
     }

@@ -15,6 +15,7 @@ object Dependency {
     const val LIFECYCLE_EXTENSIONS = "androidx.lifecycle:lifecycle-extensions:${Versions.LIFECYCLE_EXTENSIONS}"
     const val LIFECYCLE_VIEW_MODEL_KTX = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE}"
     const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${Versions.FRAGMENT}"
+    const val FRAGMENT_TEST = "androidx.fragment:fragment-testing:${Versions.FRAGMENT}"
 
     // NAVIGATION
     const val NAVIGATION_FRAGMENT_KTX = "android.arch.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}"
@@ -51,8 +52,8 @@ object Dependency {
     // HILT AND DAGGER
     const val HILT = "com.google.dagger:hilt-android:${Versions.HILT}"
     const val HILT_COMPILER = "com.google.dagger:hilt-compiler:${Versions.HILT}"
-    const val HILT_ANDROID_TESTING = "com.google.dagger:hilt-android-testing:${Versions.HILT_TESTS}"
-    const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT_TESTS}"
+    const val HILT_ANDROID_TESTING = "com.google.dagger:hilt-android-testing:${Versions.HILT}"
+    const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
     const val DAGGER = "com.google.dagger:dagger-compiler:${Versions.DAGGER}"
     const val DAGGER_COMPILER = "com.google.dagger:dagger:${Versions.DAGGER}"
 
@@ -70,6 +71,7 @@ object Dependency {
     const val ROBOELECTRIC = "org.robolectric:robolectric:${Versions.ROBO_ELECTRIC}"
     const val ANDROIDX_ARCH_CORE_TESTING = "androidx.arch.core:core-testing:${Versions.ARCH_TESTING}"
     const val ANDROID_ARCH_CORE_TESTING = "android.arch.core:core-testing:${Versions.ANDROID_CORE_TESTING}"
+    const val ANDROIDX_TEST_CORE = "androidx.test:core:${Versions.ANDROIDX_TEST_CORE}"
 
     // Android Instrumented and Unit Tests
     const val JUNIT = "junit:junit:${Versions.JUNIT}"

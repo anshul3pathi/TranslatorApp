@@ -1,6 +1,7 @@
 package com.example.translatorapp.ui.home
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -45,7 +46,7 @@ class HomeViewModel @Inject constructor(
         getTranslations()
     }
 
-    private fun updateTranslations() {
+    fun updateTranslations() {
         getTranslations()
     }
 
@@ -54,17 +55,16 @@ class HomeViewModel @Inject constructor(
         gettingTranslationJob = viewModelScope.launch {
             val translation = repository.getTranslation(word)
             if (translation.succeeded) {
-                withContext(Dispatchers.Main) {
-                    translation as Result.Success
-                    _translation.value = translation.data
-                    _networkStatus.value = NetworkStatus.SUCCESS
-                }
+                translation as Result.Success
+                _translation.value = translation.data
+                _networkStatus.value = NetworkStatus.SUCCESS
             } else {
                 translation as Result.Error
                 if (translation.exception.message != "StandaloneCoroutine was cancelled") {
                     _snackBarMessage.value =
                         applicationContext.getString(R.string.network_error_message)
                     _networkStatus.value = NetworkStatus.ERROR
+                    Log.e(TAG, "${translation.exception.message}")
                 }
             }
             if (_networkStatus.value == NetworkStatus.SUCCESS) {
@@ -84,7 +84,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun updateFavouriteFromRecentWords(hindiTranslation: HindiTranslation) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             repository.updateFavourite(hindiTranslation)
         }
     }
@@ -92,12 +92,10 @@ class HomeViewModel @Inject constructor(
     fun updateFavouriteFromTranslationContainer() {
         val currentTranslation = _translation.value!!
         currentTranslation.hindi.favourite = !currentTranslation.hindi.favourite
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             repository.updateFavourite(currentTranslation.hindi)
-            withContext(Dispatchers.Main) {
-                _translation.value = currentTranslation
-                updateTranslations()
-            }
+            _translation.value = currentTranslation
+            updateTranslations()
         }
     }
 
@@ -113,6 +111,10 @@ class HomeViewModel @Inject constructor(
         gettingTranslationJob?.cancel()
         _networkStatus.value = NetworkStatus.IDLE
         _translation.value = Constants.EMPTY_TRANSLATION
+    }
+
+    companion object {
+        private const val TAG = "HomeViewModel"
     }
 
 }

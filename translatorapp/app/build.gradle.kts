@@ -5,8 +5,6 @@ plugins {
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
     id("androidx.navigation.safeargs.kotlin")
-    id("org.jetbrains.kotlin.android.extensions")
-    id("kotlin-android")
 }
 
 android {
@@ -20,15 +18,22 @@ android {
         versionCode = Versions.APP_VERSION
         versionName = Versions.APP_VERSION_NAME
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.translatorapp.CustomTestRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.incremental"] = "true"
+            }
+        }
     }
 
-    buildTypes {
-         getByName("release") {
-                isMinifyEnabled = false
-                proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            }
-    }
+//    buildTypes {
+//         getByName("release") {
+//                isMinifyEnabled = false
+//                proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+//            }
+//    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -40,6 +45,25 @@ android {
 
     buildFeatures {
         dataBinding = true
+    }
+    testOptions.unitTests.isIncludeAndroidResources = true
+
+    packagingOptions {
+        exclude("META-INF/DEPENDENCIES")
+        exclude("META-INF/LICENSE")
+        exclude("META-INF/LICENSE.txt")
+        exclude("META-INF/license.txt")
+        exclude("META-INF/NOTICE")
+        exclude("META-INF/NOTICE.txt")
+        exclude("META-INF/")
+        exclude("META-INF/ASL2.0")
+        exclude("META-INF/*.kotlin_module")
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
+        exclude("**/attach_hotspot_windows.dll")
+        exclude("META-INF/licenses/**")
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
     }
 
 }
@@ -78,10 +102,10 @@ dependencies {
 
     // Room components
     implementation(Dependency.ROOM_RUNTIME)
-    implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("com.google.android.material:material:1.2.1")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.1")
+    implementation(Dependency.APP_COMPAT)
+    implementation(Dependency.MATERIAL)
+    implementation(Dependency.KOTLIN_STDLIB)
+    implementation(Dependency.CONSTRAINT_LAYOUT)
     kapt(Dependency.ROOM_COMPILER)
     implementation(Dependency.ROOM_KTX)
 
@@ -105,6 +129,10 @@ dependencies {
     testImplementation(Dependency.ANDROIDX_ARCH_CORE_TESTING)
     androidTestImplementation(Dependency.ANDROID_ARCH_CORE_TESTING)
 
+    // UI Testing
+    debugImplementation(Dependency.FRAGMENT_TEST)
+    implementation(Dependency.ANDROIDX_TEST_CORE)
+
     // Dependencies for Android instrumented unit tests
     androidTestImplementation(Dependency.JUNIT)
     androidTestImplementation(Dependency.KOTLIN_COROUTINES_TEST)
@@ -117,5 +145,8 @@ dependencies {
     //  Hilt and Dagger
     implementation(Dependency.HILT)
     kapt(Dependency.HILT_COMPILER)
+    androidTestImplementation(Dependency.HILT_ANDROID_TESTING)
+    kaptAndroidTest(Dependency.HILT_ANDROID_COMPILER)
+    androidTestAnnotationProcessor(Dependency.HILT_ANDROID_COMPILER)
 
 }

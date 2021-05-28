@@ -3,7 +3,6 @@
 import org.gradle.kotlin.dsl.*
 buildscript {
 
-    val kotlin_version by extra("1.5.0-release-764")
     repositories {
         google()
         maven { url = uri("https://jitpack.io") }
@@ -22,7 +21,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        mavenCentral()
     }
 }
 

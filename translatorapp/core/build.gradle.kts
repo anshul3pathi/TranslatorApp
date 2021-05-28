@@ -3,12 +3,10 @@ import org.gradle.internal.impldep.org.fusesource.jansi.AnsiRenderer.test
 //import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-
     id("com.android.library")
     kotlin("android")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
-    id("org.jetbrains.kotlin.android.extensions")
 }
 
 android {
@@ -21,7 +19,8 @@ android {
         versionCode = Versions.APP_VERSION
         versionName = Versions.APP_VERSION_NAME
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.core.CustomTestRunner"
+
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -49,10 +48,12 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         val options = this
         options.jvmTarget = "1.8"
@@ -89,11 +90,8 @@ dependencies {
     //  Hilt and Dagger
     implementation(Dependency.HILT)
     kapt(Dependency.HILT_COMPILER)
-    testImplementation(Dependency.HILT_ANDROID_TESTING)
-//    kaptTest(Dependency.HILT_ANDROID_COMPILER)
-    testAnnotationProcessor(Dependency.HILT_ANDROID_COMPILER)
     androidTestImplementation(Dependency.HILT_ANDROID_TESTING)
-//    kaptAndroidTest(Dependency.HILT_ANDROID_COMPILER)
+    kaptAndroidTest(Dependency.HILT_ANDROID_COMPILER)
     androidTestAnnotationProcessor(Dependency.HILT_ANDROID_COMPILER)
 
     // Android Tests
